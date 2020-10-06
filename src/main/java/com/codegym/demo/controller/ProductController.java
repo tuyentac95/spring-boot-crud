@@ -25,7 +25,7 @@ public class ProductController {
 
     @GetMapping("/products")
     public ModelAndView listProducts(){
-        ModelAndView modelAndView = new ModelAndView("/product/list");
+        ModelAndView modelAndView = new ModelAndView("product/list");
         List<Product> products = productService.findAll();
         modelAndView.addObject("products",products);
         return modelAndView;
@@ -33,7 +33,7 @@ public class ProductController {
 
     @GetMapping("/add-product")
     public ModelAndView showCreateForm(){
-        ModelAndView modelAndView = new ModelAndView("/product/create");
+        ModelAndView modelAndView = new ModelAndView("product/create");
         modelAndView.addObject("product",new Product());
         return modelAndView;
     }
@@ -41,7 +41,7 @@ public class ProductController {
     @PostMapping("/add-product")
     public ModelAndView addProduct(@ModelAttribute("product") Product product){
         productService.save(product);
-        ModelAndView modelAndView = new ModelAndView("/product/create");
+        ModelAndView modelAndView = new ModelAndView("product/create");
         modelAndView.addObject("product",new Product());
         return modelAndView;
     }
@@ -49,7 +49,7 @@ public class ProductController {
     @GetMapping("/edit-product/{id}")
     public ModelAndView showEditForm(@PathVariable Long id){
         Product product = productService.findById(id);
-        ModelAndView modelAndView = new ModelAndView("/product/edit");
+        ModelAndView modelAndView = new ModelAndView("product/edit");
         modelAndView.addObject("product",product);
         return modelAndView;
     }
@@ -57,7 +57,7 @@ public class ProductController {
     @PostMapping("/edit-product")
     public ModelAndView editProduct(@ModelAttribute("product") Product product){
         productService.save(product);
-        ModelAndView modelAndView = new ModelAndView("/product/edit");
+        ModelAndView modelAndView = new ModelAndView("product/edit");
         modelAndView.addObject("product",product);
         return modelAndView;
     }
