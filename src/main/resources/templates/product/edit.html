@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit product</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdn.ckeditor.com/4.15.0/standard/ckeditor.js"></script>
+</head>
+<body>
+
+<p>
+    <a href="/products">List Products</a>
+</p>
+<div class="container">
+    <h2>Edit product</h2>
+    <form th:action="@{/edit-product}" th:object="${product}" method="post">
+        <div class="form-group">
+            <label for="id">ID:</label>
+            <input type="text" id="id" th:field="*{id}" th:value="${product.id}" class="form-control" readonly="readonly"/>
+        </div>
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" id="name" th:field="*{name}" th:value="${product.name}" class="form-control"/>
+        </div>
+        <div class="form-group">
+            <label for="brand">Brand:</label>
+            <input type="text" id="brand" th:field="*{brand}" th:value="${product.brand}" class="form-control"/>
+        </div>
+        <div class="form-group">
+            <label for="made_in">Made in:</label>
+            <input type="text" id="made_in" th:field="*{made_in}" th:value="${product.made_in}" class="form-control"/>
+        </div>
+        <div class="form-group">
+            <label for="price">Price:</label>
+            <input type="text" id="price" th:field="*{price}" th:value="${product.price}" class="form-control"/>
+        </div>
+        <button type="submit" class="btn btn-success">Submit</button>
+    </form>
+</div>
+</body>
+</html>
